@@ -3,6 +3,8 @@ from PyQt5.QtCore import QStringListModel
 from mydesign import *
 import sys
 from constants import *
+import googlemaps
+import json
  
 data = ['PyQt5','Is','Awesome']
  
@@ -39,15 +41,21 @@ class mywindow(QtWidgets.QMainWindow):
                     print (flat_Model_Binary_copy)
                     print (word)
 
+            print (addr)
+            (lat,lng) = self.find_longlang(addr)
+
+
             final_array = [floorArea,lease]
             final_array.extend(flat_Type_Binary_copy)
             final_array.extend(flat_Model_Binary_copy)
-            final_array.append(addr)
+            #final_array.append(addr)
+            final_array.append(lat)
+            final_array.append(lng)
             final_array.append(storeyRange)
             final_array.append(months)
   
             print (final_array)
-            print(len(final_array))
+            print (len(final_array))
 
 
         def getAll(self):
@@ -60,8 +68,29 @@ class mywindow(QtWidgets.QMainWindow):
             months = self.ui.months_Box.value()
             return (flatType,flatModel,storeyRange,lease,addr,floorArea,months)
 
-        def getLatLong(self,addr):
-            return
+        def find_longlang(self, addr):
+            filename = 'apikey'
+            api_key = self.get_file_contents(filename)
+
+            gmaps = googlemaps.Client(key=api_key)
+            geocode_result = gmaps.geocode(addr)
+            data = json.dumps(geocode_result)
+            latitude = geocode_result[0]["geometry"]["location"]["lat"]
+            longitude = geocode_result[0]["geometry"]["location"]["lng"]
+
+            return latitude,longitude
+
+        def get_file_contents(self, filename):
+            """ Given a filename,
+                return the contents of that file
+            """
+            try:
+                with open(filename, 'r') as f:
+                    # It's assumed our file contains a single line,
+                    # with our API key
+                    return f.read().strip()
+            except FileNotFoundError:
+                print("'%s' file not found" % filename)
             
 
  
