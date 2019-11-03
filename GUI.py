@@ -3,6 +3,7 @@ from PyQt5.QtCore import QStringListModel
 from mydesign import *
 import sys
 from constants import *
+import ReadModel
 import googlemaps
 import json
  
@@ -24,6 +25,7 @@ class mywindow(QtWidgets.QMainWindow):
 
         def printAll(self):
             (flatType,flatModel,storeyRange,lease,addr,floorArea,months) = self.getAll()
+            final_array = []
             print (flatType,flatModel,storeyRange,lease,addr,floorArea,months)
 
             flat_Type_Binary_copy = flat_Type_Binary.copy()
@@ -53,9 +55,10 @@ class mywindow(QtWidgets.QMainWindow):
             final_array.append(lng)
             final_array.append(storeyRange)
             final_array.append(months)
-  
+
+            prediction = ReadModel.predict(final_array[:45])
+            print (prediction)
             print (final_array)
-            print (len(final_array))
 
 
         def getAll(self):
@@ -64,6 +67,7 @@ class mywindow(QtWidgets.QMainWindow):
             storeyRange = self.ui.storey_Range_Box.value()
             lease = self.ui.lease_Box.value()
             addr = self.ui.address_Box.text()
+            addr = addr + " Singapore"
             floorArea = self.ui.horizontalSlider.value()
             months = self.ui.months_Box.value()
             return (flatType,flatModel,storeyRange,lease,addr,floorArea,months)
