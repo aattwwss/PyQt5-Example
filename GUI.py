@@ -61,6 +61,7 @@ class mywindow(QtWidgets.QMainWindow):
             return (flatType,flatModel,storeyRange,lease,addr,floorArea,months)
 
         def getLatLong(self,addr):
+            return
             
 
  
