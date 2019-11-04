@@ -209,7 +209,7 @@ class Ui_MainWindow(object):
         self.prediction_Label = QtWidgets.QLabel(self.verticalLayoutWidget)
         font = QtGui.QFont()
         font.setFamily("MS Shell Dlg 2")
-        font.setPointSize(18)
+        font.setPointSize(24)
         self.prediction_Label.setFont(font)
         self.prediction_Label.setAlignment(QtCore.Qt.AlignCenter)
         self.prediction_Label.setObjectName("prediction_Label")
