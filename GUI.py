@@ -110,7 +110,7 @@ class mywindow(QtWidgets.QMainWindow):
 
  
 app = QtWidgets.QApplication([])
-app.setStyle('Fusion')
+#app.setStyle('Fusion')
 win = mywindow()
 win.show()
 sys.exit(app.exec())

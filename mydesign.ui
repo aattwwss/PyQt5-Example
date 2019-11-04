@@ -299,6 +299,15 @@
           <property name="maximum">
            <number>999</number>
           </property>
+          <property name="singleStep">
+           <number>1</number>
+          </property>
+          <property name="pageStep">
+           <number>100</number>
+          </property>
+          <property name="tracking">
+           <bool>true</bool>
+          </property>
           <property name="orientation">
            <enum>Qt::Horizontal</enum>
           </property>
@@ -337,6 +346,9 @@
           <weight>50</weight>
           <bold>false</bold>
          </font>
+        </property>
+        <property name="maximum">
+         <number>999</number>
         </property>
        </widget>
       </item>
@@ -397,7 +409,7 @@
          </font>
         </property>
         <property name="text">
-         <string>Temporary Label Here</string>
+         <string/>
         </property>
         <property name="alignment">
          <set>Qt::AlignCenter</set>
