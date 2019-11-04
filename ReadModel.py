@@ -14,3 +14,4 @@ def predict(features):
     return predictions
 
 
+#print (predict([100, 1999, 1, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 1.352083, 103.819836]))
